@@ -141,3 +141,9 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Private operator notes — this repo is public, keep these out of it
+*.local.md
+
+# Browser automation output
+.playwright-mcp/
