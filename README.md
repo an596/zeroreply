@@ -1,9 +1,9 @@
-# azeniq.com
+# zeroreply.app
 
-The landing page for azeniq.com, a domain that is for sale. Its one job is to
+The landing page for zeroreply.app, a domain that is for sale. Its one job is to
 turn a visitor who typed the name into the address bar into a considered offer.
 
-Live at **https://azeniq.com**
+Live at **https://zeroreply.app**
 
 ## How it's built
 
@@ -27,11 +27,13 @@ The page runs in one column, top to bottom:
 | Fits       | Sectors the name has been read as, so buyers self-identify          |
 | Offer      | The form. No listed price; buyers name a figure                     |
 | Process    | Three steps, settled through escrow                                 |
-| FAQ        | Transfer mechanics, offer expectations, payment, payment plans      |
+| FAQ        | Transfer mechanics, offer expectations, payment, plans, the TLD     |
 
 The ledger is the part that does the work. Rather than listing the domain's
-attributes, it prices the alternatives — `azeniq.io`, `getazeniq.com`, and the
-rest — by what each one costs the buyer to keep explaining.
+attributes, it prices the alternatives — `getzeroreply.com`, `zero-reply.app`,
+and the rest — by what each one costs the buyer to keep explaining. The note
+under it carries the one hard technical advantage: `.app` is in the browsers'
+HSTS preload list, so the address is HTTPS-only by construction.
 
 ## Editing
 
@@ -39,6 +41,10 @@ Everything is in `index.html`, in document order.
 
 - **Colour and type** — the custom properties in `:root` at the top of the
   `<style>` block. Every value on the page derives from them.
+- **The hero mark** — one `<span class="ch">` per character, each with an `--i`
+  index that drives its stagger delay. Change the name and the indices have to
+  stay sequential. `.mark`'s `font-size` clamp is tuned to this name's length;
+  a longer or shorter one needs the ramp retuned.
 - **Motion** — the hero characters stagger in on load and nothing else animates.
   `prefers-reduced-motion` is respected.
 - **Copy** — plain HTML.

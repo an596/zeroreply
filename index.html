@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>azeniq.com — a six-letter .com, for sale</title>
-<meta name="description" content="azeniq.com is available to buy. Six letters, no hyphens, no numerals, on the only extension that never needs explaining. Make an offer.">
+<title>zeroreply.app — the exact name, for sale</title>
+<meta name="description" content="zeroreply.app is available to buy. Nine letters, two plain words, no hyphens, on the extension built for software. Make an offer.">
 <meta name="theme-color" content="#0A0C12">
-<link rel="canonical" href="https://azeniq.com/">
+<link rel="canonical" href="https://zeroreply.app/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://azeniq.com/">
-<meta property="og:title" content="azeniq.com — a six-letter .com, for sale">
-<meta property="og:description" content="Six letters, no hyphens, no numerals, on the only extension that never needs explaining. Make an offer.">
+<meta property="og:url" content="https://zeroreply.app/">
+<meta property="og:title" content="zeroreply.app — the exact name, for sale">
+<meta property="og:description" content="Nine letters, two plain words, no hyphens, on the extension built for software. Make an offer.">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0C12'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%236D7CFF'/%3E%3C/svg%3E">
 
@@ -174,7 +174,9 @@ a { color: inherit; }
 .mark {
   font-family: var(--mono);
   font-weight: 500;
-  font-size: clamp(2.9rem, 13.2vw, 8.6rem);
+  /* 13 characters, not 10 — the ramp is tuned so the mark still fills the
+     measure at 1080px and survives a 320px viewport without wrapping. */
+  font-size: clamp(2.2rem, 10.1vw, 7.4rem);
   line-height: 0.95;
   letter-spacing: -0.055em;
   word-break: break-word;
@@ -307,6 +309,19 @@ a { color: inherit; }
 }
 .ledger__row--win .ledger__name .tld { color: var(--accent); }
 .ledger__row--win .ledger__cost { color: var(--fg-2); }
+
+.ledger__note {
+  margin-top: 22px;
+  max-width: 62ch;
+  color: var(--fg-3);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.ledger__note code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+  color: var(--fg-2);
+}
 
 @media (min-width: 720px) {
   .ledger__row {
@@ -533,7 +548,7 @@ a { color: inherit; }
 
 <header class="masthead">
   <div class="wrap masthead__inner">
-    <a class="brand" href="#top"><b>azeniq</b>.com</a>
+    <a class="brand" href="#top"><b>zeroreply</b>.app</a>
     <span class="status">For sale</span>
   </div>
 </header>
@@ -543,16 +558,16 @@ a { color: inherit; }
   <!-- Hero ────────────────────────────────────────────── -->
   <section class="hero">
     <div class="wrap hero__inner">
-      <h1 class="mark" aria-label="azeniq.com"><span aria-hidden="true"><span class="ch" style="--i:0">a</span><span class="ch" style="--i:1">z</span><span class="ch" style="--i:2">e</span><span class="ch" style="--i:3">n</span><span class="ch" style="--i:4">i</span><span class="ch" style="--i:5">q</span><span class="ch tld" style="--i:6">.</span><span class="ch tld" style="--i:7">c</span><span class="ch tld" style="--i:8">o</span><span class="ch tld" style="--i:9">m</span></span></h1>
+      <h1 class="mark" aria-label="zeroreply.app"><span aria-hidden="true"><span class="ch" style="--i:0">z</span><span class="ch" style="--i:1">e</span><span class="ch" style="--i:2">r</span><span class="ch" style="--i:3">o</span><span class="ch" style="--i:4">r</span><span class="ch" style="--i:5">e</span><span class="ch" style="--i:6">p</span><span class="ch" style="--i:7">l</span><span class="ch" style="--i:8">y</span><span class="ch tld" style="--i:9">.</span><span class="ch tld" style="--i:10">a</span><span class="ch tld" style="--i:11">p</span><span class="ch tld" style="--i:12">p</span></span></h1>
 
       <ul class="spec">
-        <li>6 characters</li>
-        <li>.com</li>
+        <li>9 letters</li>
+        <li>.app</li>
         <li>No hyphens</li>
-        <li>No numerals</li>
+        <li>HTTPS-only TLD</li>
       </ul>
 
-      <p class="hero__pitch">A name you can say once on a call and nobody asks you to spell it twice. <strong>Available to buy.</strong></p>
+      <p class="hero__pitch">Two plain words in an order nobody has used, on the extension that says &ldquo;this is software&rdquo; before you do. <strong>Available to buy.</strong></p>
 
       <div class="actions">
         <a class="btn btn--primary" href="#offer">Make an offer</a>
@@ -566,30 +581,39 @@ a { color: inherit; }
     <div class="wrap">
       <span class="eyebrow">The alternative</span>
       <h2 class="h2">Every other option costs you a sentence.</h2>
-      <p class="lede">When the .com is gone, a name bends into one of these shapes. Each bend adds something you keep explaining for as long as the company exists.</p>
+      <p class="lede">The exact name is one thing. Everything else is the name plus a workaround, and the workaround is what you keep explaining for as long as the company exists.</p>
 
       <div class="ledger">
         <div class="ledger__row">
-          <span class="ledger__name">azeniq.io</span>
-          <span class="ledger__cost">You say &ldquo;dot i-o, not dot com&rdquo; every time you hand it out. Then people type the .com anyway.</span>
-        </div>
-        <div class="ledger__row">
-          <span class="ledger__name">getazeniq.com</span>
+          <span class="ledger__name">getzeroreply.com</span>
           <span class="ledger__cost">Two extra syllables on every card, every ad read, every conference badge.</span>
         </div>
         <div class="ledger__row">
-          <span class="ledger__name">azeniqapp.com</span>
-          <span class="ledger__cost">Names the category you&rsquo;re in today, not the one you grow into.</span>
+          <span class="ledger__name">zeroreplyai.com</span>
+          <span class="ledger__cost">Names the technology you use today, not the thing you actually sell.</span>
         </div>
         <div class="ledger__row">
-          <span class="ledger__name">azeniqhq.com</span>
+          <span class="ledger__name">zero-reply.app</span>
+          <span class="ledger__cost">The hyphen is a question every time the name is said out loud, and a typo every time it isn&rsquo;t.</span>
+        </div>
+        <div class="ledger__row">
+          <span class="ledger__name">tryzeroreply.com</span>
+          <span class="ledger__cost">A permanent trial. The word never comes off once it&rsquo;s on the logo.</span>
+        </div>
+        <div class="ledger__row">
+          <span class="ledger__name">zeroreplyhq.com</span>
           <span class="ledger__cost">Reads like a placeholder, because it usually is one.</span>
         </div>
         <div class="ledger__row ledger__row--win">
-          <span class="ledger__name">azeniq<span class="tld">.com</span></span>
+          <span class="ledger__name">zeroreply<span class="tld">.app</span></span>
           <span class="ledger__cost">Nothing to explain.</span>
         </div>
       </div>
+
+      <p class="ledger__note">One thing <code>.app</code> gives you that no legacy extension can: the whole
+        registry sits in the browsers&rsquo; HSTS preload list, so every visit is HTTPS before your
+        server is ever asked. There is no insecure version of this address to leak, misconfigure,
+        or get flagged for.</p>
     </div>
   </section>
 
@@ -597,15 +621,15 @@ a { color: inherit; }
   <section class="section section--tight">
     <div class="wrap">
       <span class="eyebrow">Where it lands</span>
-      <h2 class="h2">Abstract enough not to date. Concrete enough to sound like something.</h2>
-      <p class="lede">The name carries no built-in meaning to argue with, which is what makes it portable. It has been read as all of these:</p>
+      <h2 class="h2">The name does the positioning before your homepage loads.</h2>
+      <p class="lede">Two words everyone already knows, describing an outcome everyone already wants. Nothing to teach, nothing to spell, no coinage to defend. It has been read as all of these:</p>
       <ul class="chips">
-        <li>AI &amp; data</li>
-        <li>Developer tools</li>
-        <li>Fintech</li>
-        <li>Security</li>
-        <li>Consultancy</li>
-        <li>Health tech</li>
+        <li>AI inbox triage</li>
+        <li>Sales outreach</li>
+        <li>Support automation</li>
+        <li>Scheduling</li>
+        <li>CRM</li>
+        <li>Messaging infrastructure</li>
       </ul>
     </div>
   </section>
@@ -623,8 +647,8 @@ a { color: inherit; }
         <form id="offer-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
           <!-- Web3Forms routing token — public by design, rate-limited server-side. -->
           <input type="hidden" name="access_key" value="0f6c5f1c-d2c7-411d-be98-96178601ad92">
-          <input type="hidden" name="subject" value="New offer for azeniq.com">
-          <input type="hidden" name="from_name" value="azeniq.com">
+          <input type="hidden" name="subject" value="New offer for zeroreply.app">
+          <input type="hidden" name="from_name" value="zeroreply.app">
 
           <!-- Honeypot: bots fill it, humans never see it. -->
           <label class="hp" aria-hidden="true">
@@ -743,6 +767,18 @@ a { color: inherit; }
             Possibly, on a shorter schedule and with the domain held in escrow until the final payment clears. Say so in your message and we&rsquo;ll work out the terms.
           </div>
         </div>
+
+        <div class="faq__item">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-5">
+              Is a .app any different to own?
+              <span class="faq__sign" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq__a" id="faq-5">
+            It&rsquo;s an ordinary gTLD &mdash; no eligibility rules, no paperwork, and it transfers between registrars exactly like a .com. The one difference is that browsers refuse it over plain HTTP, so whatever you host on it needs a valid certificate from day one. Every serious host issues those free and automatically.
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -751,7 +787,7 @@ a { color: inherit; }
 
 <footer class="foot">
   <div class="wrap foot__inner">
-    <span>azeniq.com &mdash; privately held, available to buy</span>
+    <span>zeroreply.app &mdash; privately held, available to buy</span>
     <span>Offers via <a href="#offer">the form above</a></span>
   </div>
 </footer>
