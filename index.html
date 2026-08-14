@@ -479,35 +479,16 @@ a { color: inherit; }
    FAQ
    ───────────────────────────────────────────── */
 .faq { margin-top: clamp(28px, 4vw, 40px); border-top: 1px solid var(--line); }
-.faq__item { border-bottom: 1px solid var(--line); }
+.faq__item { border-bottom: 1px solid var(--line); padding: 20px 0 22px; }
 .faq__q {
-  width: 100%;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 20px;
-  background: none;
-  border: 0;
-  padding: 20px 0;
+  margin: 0 0 10px;
   font-family: var(--sans);
   font-size: 16.5px;
   font-weight: 500;
   letter-spacing: -0.012em;
   color: var(--fg);
-  text-align: left;
-  cursor: pointer;
 }
-.faq__q:hover { color: var(--accent-2); }
-.faq__sign {
-  flex: none;
-  font-family: var(--mono);
-  font-size: 15px;
-  color: var(--fg-3);
-  transition: transform 200ms ease, color 200ms ease;
-}
-.faq__q[aria-expanded="true"] .faq__sign { transform: rotate(45deg); color: var(--accent); }
-.faq__a { padding: 0 0 22px; max-width: 62ch; color: var(--fg-2); font-size: 15px; }
-.faq__a[hidden] { display: none; }
+.faq__a { margin: 0; max-width: 62ch; color: var(--fg-2); font-size: 15px; line-height: 1.65; }
 
 /* ─────────────────────────────────────────────
    Footer
@@ -721,63 +702,28 @@ a { color: inherit; }
 
       <div class="faq">
         <div class="faq__item">
-          <h3>
-            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-1">
-              How does the transfer actually happen?
-              <span class="faq__sign" aria-hidden="true">+</span>
-            </button>
-          </h3>
-          <div class="faq__a" id="faq-1">
-            Once escrow confirms your payment, you get the authorization code and the domain moves into your registrar account. A push between accounts at the same registrar finishes the same day; a transfer between different registrars usually takes five to seven days.
-          </div>
+          <h3 class="faq__q">How does the transfer actually happen?</h3>
+          <p class="faq__a">Once escrow confirms your payment, you get the authorization code and the domain moves into your registrar account. A push between accounts at the same registrar finishes the same day; a transfer between different registrars usually takes five to seven days.</p>
         </div>
 
         <div class="faq__item">
-          <h3>
-            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-2">
-              What counts as a realistic offer?
-              <span class="faq__sign" aria-hidden="true">+</span>
-            </button>
-          </h3>
-          <div class="faq__a" id="faq-2">
-            There&rsquo;s no formula and no listed price. Offers are weighed on what the name is worth to your business. A considered number with a line about what you&rsquo;re building gets a considered reply; automated three-figure blasts get archived.
-          </div>
+          <h3 class="faq__q">What counts as a realistic offer?</h3>
+          <p class="faq__a">There&rsquo;s no formula and no listed price. Offers are weighed on what the name is worth to your business. A considered number with a line about what you&rsquo;re building gets a considered reply; automated three-figure blasts get archived.</p>
         </div>
 
         <div class="faq__item">
-          <h3>
-            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-3">
-              Which payment methods work?
-              <span class="faq__sign" aria-hidden="true">+</span>
-            </button>
-          </h3>
-          <div class="faq__a" id="faq-3">
-            Anything Escrow.com accepts &mdash; wire transfer, credit card, and PayPal on smaller amounts. Who pays the escrow fee is part of the negotiation, not a fixed rule.
-          </div>
+          <h3 class="faq__q">Which payment methods work?</h3>
+          <p class="faq__a">Anything Escrow.com accepts &mdash; wire transfer, credit card, and PayPal on smaller amounts. Who pays the escrow fee is part of the negotiation, not a fixed rule.</p>
         </div>
 
         <div class="faq__item">
-          <h3>
-            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-4">
-              Will you do a payment plan?
-              <span class="faq__sign" aria-hidden="true">+</span>
-            </button>
-          </h3>
-          <div class="faq__a" id="faq-4">
-            Possibly, on a shorter schedule and with the domain held in escrow until the final payment clears. Say so in your message and we&rsquo;ll work out the terms.
-          </div>
+          <h3 class="faq__q">Will you do a payment plan?</h3>
+          <p class="faq__a">Possibly, on a shorter schedule and with the domain held in escrow until the final payment clears. Say so in your message and we&rsquo;ll work out the terms.</p>
         </div>
 
         <div class="faq__item">
-          <h3>
-            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-5">
-              Is a .app any different to own?
-              <span class="faq__sign" aria-hidden="true">+</span>
-            </button>
-          </h3>
-          <div class="faq__a" id="faq-5">
-            It&rsquo;s an ordinary gTLD &mdash; no eligibility rules, no paperwork, and it transfers between registrars exactly like a .com. The one difference is that browsers refuse it over plain HTTP, so whatever you host on it needs a valid certificate from day one. Every serious host issues those free and automatically.
-          </div>
+          <h3 class="faq__q">Is a .app any different to own?</h3>
+          <p class="faq__a">It&rsquo;s an ordinary gTLD &mdash; no eligibility rules, no paperwork, and it transfers between registrars exactly like a .com. The one difference is that browsers refuse it over plain HTTP, so whatever you host on it needs a valid certificate from day one. Every serious host issues those free and automatically.</p>
         </div>
       </div>
     </div>
@@ -795,19 +741,6 @@ a { color: inherit; }
 <script>
 (function () {
   "use strict";
-
-  /* ── FAQ disclosure ─────────────────────────────── */
-  document.querySelectorAll(".faq__q").forEach(function (btn) {
-    var panel = document.getElementById(btn.getAttribute("aria-controls"));
-    if (!panel) return;
-    panel.hidden = true;
-    btn.setAttribute("aria-expanded", "false");
-    btn.addEventListener("click", function () {
-      var open = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", String(!open));
-      panel.hidden = open;
-    });
-  });
 
   /* ── Offer form ─────────────────────────────────── */
   var form   = document.getElementById("offer-form");
