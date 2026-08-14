@@ -14,6 +14,19 @@
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0C12'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%236D7CFF'/%3E%3C/svg%3E">
 
+<!-- Ahead of the stylesheet, so the ground is decided before the first paint
+     rather than flashed dark and corrected. -->
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("theme"); } catch (e) {}
+  var root = document.documentElement;
+  root.dataset.theme = saved
+    || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  root.dataset.js = "on";
+})();
+</script>
+
 <style>
 /* ─────────────────────────────────────────────
    Tokens
@@ -30,6 +43,14 @@
   --accent:     #6D7CFF;
   --accent-2:   #A8B0FF;
   --accent-soft: rgba(109, 124, 255, 0.12);
+  --accent-line: rgba(109, 124, 255, 0.28);
+  --glow:       rgba(109, 124, 255, 0.16);
+  --on-accent:  #0A0C12;
+  --placeholder: #545C6D;
+  --line-3:     #38415A;
+  --err-line:   #5A3242;
+  --err-bg:     rgba(90, 50, 66, 0.28);
+  --err-fg:     #F3C9D4;
 
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -37,6 +58,30 @@
   --gutter: clamp(20px, 5vw, 48px);
   --measure: 1080px;
   --radius: 10px;
+}
+
+/* The accent darkens rather than carrying over: #6D7CFF on a light ground is
+   3.4:1, under the floor for the text and the primary button that use it. */
+:root[data-theme="light"] {
+  --ink:        #FBFBFD;
+  --ink-2:      #FFFFFF;
+  --surface:    #FFFFFF;
+  --line:       #E3E5EE;
+  --line-2:     #CCD0DE;
+  --fg:         #10131C;
+  --fg-2:       #4B5265;
+  --fg-3:       #666D80;
+  --accent:     #4A56CE;
+  --accent-2:   #333DA4;
+  --accent-soft: rgba(74, 86, 206, 0.10);
+  --accent-line: rgba(74, 86, 206, 0.30);
+  --glow:       rgba(74, 86, 206, 0.10);
+  --on-accent:  #FFFFFF;
+  --placeholder: #8A90A2;
+  --line-3:     #A8AEC2;
+  --err-line:   #D8A6B4;
+  --err-bg:     rgba(216, 166, 180, 0.18);
+  --err-fg:     #8C2140;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -140,7 +185,7 @@ a { color: inherit; }
   text-transform: uppercase;
   color: var(--accent-2);
   background: var(--accent-soft);
-  border: 1px solid rgba(109, 124, 255, 0.28);
+  border: 1px solid var(--accent-line);
   border-radius: 100px;
   padding: 5px 12px 5px 10px;
 }
@@ -151,6 +196,27 @@ a { color: inherit; }
   border-radius: 50%;
   background: var(--accent);
 }
+
+.masthead__end { display: flex; align-items: center; gap: 10px; }
+
+/* Only a script can act on it, so only a script reveals it. */
+.theme { display: none; }
+:root[data-js] .theme {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  background: none;
+  border: 1px solid var(--line-2);
+  border-radius: 100px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+.theme:hover { color: var(--fg); border-color: var(--fg-3); }
 
 /* ─────────────────────────────────────────────
    Hero
@@ -165,7 +231,7 @@ a { color: inherit; }
   position: absolute;
   inset: -30% -10% auto -10%;
   height: 90%;
-  background: radial-gradient(58% 62% at 22% 32%, rgba(109, 124, 255, 0.16), transparent 72%);
+  background: radial-gradient(58% 62% at 22% 32%, var(--glow), transparent 72%);
   pointer-events: none;
   z-index: 0;
 }
@@ -261,7 +327,7 @@ a { color: inherit; }
 }
 .btn--primary {
   background: var(--accent);
-  color: #0A0C12;
+  color: var(--on-accent);
   font-weight: 600;
 }
 .btn--primary:hover { background: var(--accent-2); transform: translateY(-1px); }
@@ -421,8 +487,8 @@ a { color: inherit; }
   transition: border-color 150ms ease, background-color 150ms ease;
 }
 .textarea { resize: vertical; min-height: 92px; line-height: 1.55; }
-.input::placeholder, .textarea::placeholder { color: #545C6D; }
-.input:hover, .textarea:hover { border-color: #38415A; }
+.input::placeholder, .textarea::placeholder { color: var(--placeholder); }
+.input:hover, .textarea:hover { border-color: var(--line-3); }
 .input:focus, .textarea:focus {
   outline: none;
   border-color: var(--accent);
@@ -472,8 +538,8 @@ a { color: inherit; }
   padding: 14px 16px;
 }
 .result[hidden] { display: none; }
-.result--ok { border-color: rgba(109, 124, 255, 0.4); background: var(--accent-soft); color: var(--fg); }
-.result--err { border-color: #5A3242; background: rgba(90, 50, 66, 0.28); color: #F3C9D4; }
+.result--ok { border-color: var(--accent-line); background: var(--accent-soft); color: var(--fg); }
+.result--err { border-color: var(--err-line); background: var(--err-bg); color: var(--err-fg); }
 
 /* ─────────────────────────────────────────────
    FAQ
@@ -530,7 +596,10 @@ a { color: inherit; }
 <header class="masthead">
   <div class="wrap masthead__inner">
     <a class="brand" href="#top"><b>zeroreply</b>.app</a>
-    <span class="status">For sale</span>
+    <div class="masthead__end">
+      <span class="status">For sale</span>
+      <button class="theme" type="button" id="theme-toggle"></button>
+    </div>
   </div>
 </header>
 
@@ -741,6 +810,30 @@ a { color: inherit; }
 <script>
 (function () {
   "use strict";
+
+  /* ── Theme ──────────────────────────────────────── */
+  var root   = document.documentElement;
+  var toggle = document.getElementById("theme-toggle");
+  var meta   = document.querySelector('meta[name="theme-color"]');
+  var GROUND = { dark: "#0A0C12", light: "#FBFBFD" };
+
+  function wear(theme) {
+    root.dataset.theme = theme;
+    if (meta) meta.content = GROUND[theme];
+    // The label names the theme one click away, not the one being worn.
+    var next = theme === "dark" ? "light" : "dark";
+    toggle.textContent = next;
+    toggle.setAttribute("aria-label", "Switch to the " + next + " theme");
+  }
+
+  if (toggle) {
+    wear(root.dataset.theme === "light" ? "light" : "dark");
+    toggle.addEventListener("click", function () {
+      var next = root.dataset.theme === "light" ? "dark" : "light";
+      wear(next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  }
 
   /* ── Offer form ─────────────────────────────────── */
   var form   = document.getElementById("offer-form");
